@@ -2,8 +2,9 @@ package parking_lot;
 
 
 /**
- * javac parking_lot/* -d output
+ * javac parking_lot/Main.java -d output
  * java -cp output/ parking_lot.Main
+ * https://workat.tech/machine-coding/practice/design-parking-lot-qm6hwq4wkhp8 
  */
 
 import java.util.Scanner;
