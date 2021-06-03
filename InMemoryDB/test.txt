@@ -1,0 +1,8 @@
+create database test
+create table test (name string,roll_no int)
+create table test2 (name string,roll_no int,subject string,dept string , class string)
+INSERT into test values   (Rahul,1)
+select * from test
+select name from test
+select roll_no from test where name=Rahul
+select * from test where name!=hey
