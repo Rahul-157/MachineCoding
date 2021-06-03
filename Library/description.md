@@ -47,13 +47,12 @@ Multiple lines with each line containing a command.
 
     create_library <library_id> <no_of_racks>
     add_book <book_id> <title> <comma_separated_authors> <comma_separated_publishers> <comma_separated_book_copy_ids>
-    remove_book_copy <book_copy_id>
+    remove_book_copy <book_id> <book_copy_id>
     borrow_book <book_id> <user_id> <due_date>
-    borrow_book_copy <book_copy_id> <user_id> <due_date>
-    return_book_copy <book_copy_id>
+    return_book_copy <book_id> <book_copy_id>
     print_borrowed <user_id>
     search <attribute> <attribute_value>
-        Possible values of attribute: book_id, author, publisher
+        Possible values of attribute: book_id, author_id, publisher_id
     exit
 
 <b>Stop taking the input when you encounter the word <i>exit</i>.</b>
@@ -63,46 +62,47 @@ Multiple lines with each line containing a command.
 ### Output Format
 
 Print output based on the specific commands as mentioned below.
+
     create_library
-    Created library with <no_of_racks> racks
+        Created library with <no_of_racks> racks
 
     add_book
-    Added Book to racks: <comma_separated_rack_nos>
-    Print "Rack not available" if there are not enough racks available and reject this add request.
+        Added Book to racks: <comma_separated_rack_nos>
+        Print "Rack not available" if there are not enough racks available and reject this add request.
 
     remove_book_copy
-    Removed book copy: <book_copy_id> from rack: <rack_no>
-    Print "Invalid Book Copy ID" if the book copy is not present in any of the racks.
+        Removed book copy: <book_copy_id> from rack: <rack_no>
+        Print "Invalid Book Copy ID" if the book copy is not present in any of the racks.
 
     borrow_book
-    Borrowed Book from rack: <rack_no>
-    Print "Invalid Book ID" if book id is invalid.
-    Print "Not available" if no more copies of that book are available.
-    Print "Overlimit" if the user has already borrowed 5 books.
+        Borrowed Book from rack: <rack_no>
+        Print "Invalid Book ID" if book id is invalid.
+        Print "Not available" if no more copies of that book are available.
+        Print "Overlimit" if the user has already borrowed 5 books.
 
     borrow_book_copy
-    Borrowed Book Copy from rack: <rack_no>
-    Print "Invalid Book Copy ID" if the book copy is not present in any of the racks.
-    Print "Overlimit" if the user has already borrowed 5 books.
+        Borrowed Book Copy from rack: <rack_no>
+        Print "Invalid Book Copy ID" if the book copy is not present in any of the racks.
+        Print "Overlimit" if the user has already borrowed 5 books.
 
     return_book_copy
-    Returned book copy <book_copy_id> and added to rack: <rack_no>
-    Print "Invalid Book Copy ID" if the book copy id is not present in the system.
-    Assume that the book copy is not already present on the rack.
+        Returned book copy <book_copy_id> and added to rack: <rack_no>
+        Print "Invalid Book Copy ID" if the book copy id is not present in the system.
+        Assume that the book copy is not already present on the rack.
 
     print_borrowed
-    Book Copy: <book_copy_id> <due_date>
-    The above will be printed for each borrowed book copy.
-    Do not print anything if no book is borrowed
-    Print in ascending order of book_copy_id.
+        Book Copy: <book_copy_id> <due_date>
+        The above will be printed for each borrowed book copy.
+        Do not print anything if no book is borrowed
+        Print in ascending order of book_copy_id.
 
     search
-    Book Copy: <book_copy_id> <book_id> <title> <comma_separated_authors> <comma_separated_publishers> <rack_no> <borrowed_by_id> <due_date>
-    The above will be printed for each copy (irrespective of whether it is borrowed or not).
-    If the book is borrowed, rack_no will be -1
-    If the book is not borrowed, do not print borrowed_by_id and due_date
-    If the library does not own that book then do not print anything
-    Print in ascending order of rack number.
+        Book Copy: <book_copy_id> <book_id> <title> <comma_separated_authors> <comma_separated_publishers> <rack_no> <borrowed_by_id> <due_date>
+        The above will be printed for each copy (irrespective of whether it is borrowed or not).
+        If the book is borrowed, rack_no will be -1
+        If the book is not borrowed, do not print borrowed_by_id and due_date
+        If the library does not own that book then do not print anything
+        Print in ascending order of rack number.
 
 ### Examples
 #### Sample Input
@@ -115,8 +115,8 @@ Print output based on the specific commands as mentioned below.
     search book_id 3
     search author_id author2
     search author_id author3
-    remove_book_copy book_copy6
-    remove_book_copy book_copy13
+    remove_book_copy 2 book_copy6
+    remove_book_copy 3 book_copy13
     add_book 3 book3 author2 publisher2 book_copy13
     search book_id 2
     print_borrowed user1
@@ -131,12 +131,12 @@ Print output based on the specific commands as mentioned below.
     borrow_book 2 user1 2020-12-31
     borrow_book 2 user1 2020-12-31
     print_borrowed user1
-    return_book_copy book_copy1
-    return_book_copy book_copy2
-    borrow_book_copy book_copy1
-    borrow_book_copy book_copy1
-    borrow_book_copy book_copy2
-    borrow_book_copy book_copy10
+    return_book_copy 1 book_copy1
+    return_book_copy 2 book_copy2
+    borrow_book 1 book_copy1 user1 2020-12-31
+    borrow_book 2 book_copy1 user1 2020-12-31
+    borrow_book 3 book_copy2 user1 2020-12-31
+    borrow_book 4 book_copy10 user1 2020-12-31
     print_borrowed user1
     exit
 
