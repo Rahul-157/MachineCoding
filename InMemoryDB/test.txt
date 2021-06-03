@@ -5,4 +5,4 @@ INSERT into test values   (Rahul,1)
 select * from test
 select name from test
 select roll_no from test where name=Rahul
-select * from test where name!=hey
+select * from test where name!=hey 
