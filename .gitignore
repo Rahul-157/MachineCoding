@@ -23,3 +23,5 @@ output/*
 hs_err_pid*
 
 .vscode
+*.groovy
+**/compiled_classes
