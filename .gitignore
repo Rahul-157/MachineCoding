@@ -6,7 +6,9 @@ output/*
 
 # BlueJ files
 *.ctxt
-
+*.zip
+**/node_modules
+**/package-lock.json
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

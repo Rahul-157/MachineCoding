@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>LiveLogs</title>
+</head>
+
+<body>
+
+<div id="logs" style="text-align: center;padding: auto;margin: auto;max-height: 600px;max-width: 540px;min-height: 600px;min-width: 540px;overflow-y: scroll;">
+
+</div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io()
+    
+    socket.on('newMessage', function (message) {
+      console.log(message.text.length);
+      message.text.forEach(line => {
+        document.getElementById('logs').appendChild(document.createTextNode(line));
+      });
+      document.getElementById('logs').appendChild(document.createElement("br"));
+    });
+
+    socket.on('disconnect', function () {
+      console.log('Disconnect from server')
+    });
+  </script>
+</body>
+
+</html>
