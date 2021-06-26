@@ -5,7 +5,8 @@ output/*
 *.log
 
 
-
+**/images
+**image
 
 # BlueJ files
 *.ctxt

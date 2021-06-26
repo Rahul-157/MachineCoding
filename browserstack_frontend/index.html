@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img id="modal_image">
+
+    </div>
+
+    <label>Choose a Category:</label>
+    <select name="cat" id="cat">
+        <option value="none" selected>None</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+    <label>Sort:</label>
+    <select name="sort" id="sort">
+        <option value="none" selected>None</option>
+        <option value="date">Date</option>
+        <option value="title">Title</option>
+        <option value="category">Category</option>
+    </select>
+    <button onclick="sortnfilter()">Process</button>
+    <div id="grid-container">
+    </div>
+</body>
+
+</html>
